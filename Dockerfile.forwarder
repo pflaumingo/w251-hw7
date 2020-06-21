@@ -1,0 +1,11 @@
+FROM eclipse-mosquitto
+
+RUN apk add py-pip
+RUN pip install --upgrade pip
+RUN pip install paho-mqtt
+
+WORKDIR /forwarder
+
+ADD forwarder/forwarder.py /forwarder
+
+CMD [ "python", "forwarder.py" ]
